@@ -3132,7 +3132,7 @@ _ProxyHandler _proxyHandlerForSource(StreamAudioSource source) {
           sourceResponse.offset!,
           sourceResponse.offset! + sourceResponse.contentLength! - 1,
           sourceResponse.sourceLength);
-      request.response.contentLength = range.length ?? -1;
+      request.response.contentLength = sourceResponse.contentLength ?? -1;
       request.response.headers
           .set(HttpHeaders.contentRangeHeader, range.header);
       request.response.statusCode = 206;
