@@ -3097,6 +3097,9 @@ _ProxyHandler _proxyHandlerForSource(StreamAudioSource source) {
     final rangeRequest =
         _HttpRangeRequest.parse(request.headers[HttpHeaders.rangeHeader]);
 
+    print(request.headers);
+    print(request.response.headers);
+
     request.response.headers.clear();
 
     StreamAudioResponse sourceResponse;
