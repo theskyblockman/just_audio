@@ -3118,6 +3118,8 @@ _ProxyHandler _proxyHandlerForSource(StreamAudioSource source) {
     request.response.headers
         .set(HttpHeaders.contentTypeHeader, sourceResponse.contentType);
 
+    print(request.response.headers);
+
     if (sourceResponse.rangeRequestsSupported) {
       request.response.headers.set(HttpHeaders.acceptRangesHeader, 'bytes');
     }
