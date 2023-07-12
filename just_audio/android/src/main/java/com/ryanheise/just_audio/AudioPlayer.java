@@ -100,7 +100,7 @@ public class AudioPlayer implements MethodCallHandler, Player.Listener, Metadata
     private Map<String, Object> pendingPlaybackEvent;
 
     private ExoPlayer player;
-    private DefaultExtractorsFactory extractorsFactory = new DefaultExtractorsFactory();
+    private DefaultExtractorsFactory extractorsFactory = new DefaultExtractorsFactory().setConstantBitrateSeekingEnabled(true);
     private Integer audioSessionId;
     private MediaSource mediaSource;
     private Integer currentIndex;
@@ -591,7 +591,6 @@ public class AudioPlayer implements MethodCallHandler, Player.Listener, Metadata
     private MediaSource decodeAudioSource(final Object json) {
         Map<?, ?> map = (Map<?, ?>)json;
         String id = (String)map.get("id");
-        System.out.println(map);
         switch ((String)map.get("type")) {
         case "progressive":
             return new ProgressiveMediaSource.Factory(buildDataSourceFactory(), extractorsFactory)
